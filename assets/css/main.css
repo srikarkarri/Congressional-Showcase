@@ -46,8 +46,6 @@ body {
     url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   background-size: 200px 200px;
   min-height: 100%;
-  display: flex;
-  flex-direction: column;
 }
 
 a {
@@ -116,10 +114,20 @@ img {
   opacity: 0.75;
 }
 
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+  position: relative;
+  z-index: 1;
+}
+
 .hero-btn {
   display: inline-block;
-  margin-top: 1.25rem;
   padding: 0.6rem 1.8rem;
+  cursor: pointer;
   background: rgba(255,255,255,0.15);
   color: var(--hc-white);
   font-weight: 700;
@@ -136,18 +144,18 @@ img {
   text-decoration: none;
 }
 
-/* Map — takes up most of the viewport */
+/* Map */
 #map {
-  flex: 1;
-  padding: 0;
-  max-width: 100%;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 #map-container {
   width: 100%;
-  height: calc(100vh - 200px);
-  min-height: 500px;
-  border-top: 3px solid var(--hc-red);
+  height: 600px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--hc-smoke);
 }
 
 /* Footer */
@@ -182,9 +190,12 @@ footer kbd {
     padding: 2.5rem 1.5rem 2rem;
   }
 
+  #map {
+    padding: 2rem 1rem;
+  }
+
   #map-container {
-    height: calc(100vh - 180px);
-    min-height: 400px;
+    height: 450px;
   }
 }
 
@@ -194,7 +205,6 @@ footer kbd {
   }
 
   #map-container {
-    height: calc(100vh - 160px);
-    min-height: 350px;
+    height: 350px;
   }
 }

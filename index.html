@@ -16,7 +16,10 @@
     <h1>Congressional App Challenge Showcase</h1>
     <p>High schoolers building apps that matter.</p>
     <p class="subtitle">Click a pin on the map to explore a project</p>
-    <a href="https://github.com/hackclub/Congressional-Showcase/blob/main/CONTRIBUTING.md" class="hero-btn">Add Your Project</a>
+    <div class="hero-actions">
+      <a href="https://github.com/hackclub/Congressional-Showcase/blob/main/README.md#add-your-project" class="hero-btn">Add Your Project</a>
+      <button id="random-project" class="hero-btn" onclick="goToRandomProject()">View Random Project</button>
+    </div>
   </header>
 
   <section id="map">
@@ -32,5 +35,16 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="assets/js/map.js"></script>
   <script src="assets/js/nav.js" data-root="./"></script>
+  <script>
+    function goToRandomProject() {
+      fetch('./projects.json')
+        .then(function(r) { return r.json(); })
+        .then(function(p) {
+          if (p.length === 0) return;
+          var pick = p[Math.floor(Math.random() * p.length)];
+          window.location.href = 'sites/' + pick.slug + '/';
+        });
+    }
+  </script>
 </body>
 </html>
